@@ -13,8 +13,13 @@ class CreateFurnitorisTable extends Migration
      */
     public function up()
     {
-        Schema::create('furnitoris', function (Blueprint $table) {
+        Schema::create('furnitoret', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 100);
+            $table->string('phone', 50)->nullable();	
+            $table->string('address', 50)->nullable();
+            $table->text('notes')->nullable();		
+
             $table->timestamps();
         });
     }
@@ -26,6 +31,6 @@ class CreateFurnitorisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('furnitoris');
+        Schema::dropIfExists('furnitoret');
     }
 }

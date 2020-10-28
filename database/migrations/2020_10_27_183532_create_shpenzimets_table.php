@@ -13,8 +13,13 @@ class CreateShpenzimetsTable extends Migration
      */
     public function up()
     {
-        Schema::create('shpenzimets', function (Blueprint $table) {
+        Schema::create('shpenzimet', function (Blueprint $table) {
             $table->id();
+            $table->string('type', 100);
+            $table->double('amount', 8, 2);	
+            $table->date('date');	
+            $table->text('notes')->nullable();		
+
             $table->timestamps();
         });
     }
@@ -26,6 +31,6 @@ class CreateShpenzimetsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shpenzimets');
+        Schema::dropIfExists('shpenzimet');
     }
 }

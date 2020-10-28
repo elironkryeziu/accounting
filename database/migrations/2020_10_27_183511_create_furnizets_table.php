@@ -13,8 +13,15 @@ class CreateFurnizetsTable extends Migration
      */
     public function up()
     {
-        Schema::create('furnizets', function (Blueprint $table) {
+        Schema::create('furnizimet', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('furnitor_id');
+            $table->string('type', 100);
+            $table->double('amount', 8, 2);	
+            $table->date('date');	
+            $table->text('notes')->nullable();		
+
+            $table->foreign('furnitor_id')->references('id')->on('furnitoret')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -26,6 +33,6 @@ class CreateFurnizetsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('furnizets');
+        Schema::dropIfExists('furnizimet');
     }
 }

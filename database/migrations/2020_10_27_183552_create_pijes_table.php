@@ -13,8 +13,10 @@ class CreatePijesTable extends Migration
      */
     public function up()
     {
-        Schema::create('pijes', function (Blueprint $table) {
+        Schema::create('pijet', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 100);
+            
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreatePijesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pijes');
+        Schema::dropIfExists('pijet');
     }
 }
