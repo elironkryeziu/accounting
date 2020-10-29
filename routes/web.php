@@ -13,10 +13,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//furnitoret
+Route::get('/furnitoret', 'FurnizimetController@furnitoret');
+Route::post('/addfurnitor', 'FurnizimetController@addFurnitor')->name('addFurnitor');
+Route::delete('/furnitoret/{id}', 'FurnizimetController@deleteFurnitor');
+Route::get('/furnitoret/new', function () {
+    return view('new-furnitoret');
+});
+
+// furnizimet
+Route::get('/furnizimet', 'FurnizimetController@get');
+
+//shpenzimet
+Route::get('/shpenzimet', 'ShpenzimetController@get');
+

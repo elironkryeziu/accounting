@@ -9,10 +9,18 @@
            Home
           </a>
           </li>
-      <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="/home">
-          Dashboard
+      <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="/furnitoret">
+          Furnitoret
           </a>
           </li>
+        <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="/furnizimet">
+        Furnizimet
+        </a>
+        </li>
+        <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="/shpenzimet">
+        Shpenzimet
+        </a>
+        </li>
 
           <li class="c-sidebar-nav-item mt-auto"><a class="c-sidebar-nav-link font-weight-bold c-sidebar-nav-link-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                        document.getElementById('logout-form').submit();">
