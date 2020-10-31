@@ -7,7 +7,7 @@
             <div class="container">
                 <h4>Shpenzimet</h4>
                 <br>
-                <a href="/furnizimet/new" class="btn btn-primary mb-3">Shto shpenzim</a>
+                <a href="/shpenzimet/new" class="btn btn-primary mb-3">Shto shpenzim</a>
                 <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -23,7 +23,7 @@
                     <tr>
                     <th scope="row">{{$loop->index+1}}</th>
                     <td class="text-center">{{ $shpenzimi->type }}</td>
-                    <td class="text-center">{{ $shpenzimi->amount }}</td>
+                    <td class="text-center">{{ $shpenzimi->amount }}€</td>
                     <td class="text-center">{{ $shpenzimi->date }}</td>
                     <td class="text-center">{{ $shpenzimi->notes }}</td>
                     </tr>

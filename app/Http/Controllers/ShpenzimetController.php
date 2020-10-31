@@ -19,4 +19,23 @@ class ShpenzimetController extends Controller
         
         return view('shpenzimet',$data);
     }
+
+    public function add(Request $request)
+    {
+        $shpenzimet = Shpenzimet::create([
+            'type' => $request->type,
+            'amount' => $request->amount,
+            'date' => $request->date,
+            'notes' => $request->notes
+        ]);
+
+        $shpenzimet = Shpenzimet::orderBy('created_at','desc')->get();
+        
+        $data = [
+            'shpenzimet' => $shpenzimet
+        ];
+        
+        return view('shpenzimet',$data);
+
+    }
 }

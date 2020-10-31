@@ -15,4 +15,9 @@ class FurnizimetPije extends Model
     {
         return $this->belongsToMany('App\Pije','furnizimet_pije_items','furnizim_id')->withPivot('qty', 'amount');
     }
+    
+    public function furnitori()
+    {
+        return $this->belongsTo('App\Furnitori','furnitor_id');
+    }
 }

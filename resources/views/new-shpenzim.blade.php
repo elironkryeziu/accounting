@@ -5,26 +5,27 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="container">
-            <a href="/furnitoret" class="btn btn-secondary mb-4">< Kthehu</a>
-            <h3>Furnitori i ri:</h3>
-            <form action="{{ route('addFurnitor') }}" method="post">
+            <a href="/shpenzimet" class="btn btn-secondary mb-4">< Kthehu</a>
+            <h3>Shpenzim i ri:</h3>
+            <form action="{{ route('addShpenzim') }}" method="post">
             @csrf
             <div class="form-group">
-                <label for="exampleFormControlInput1">Emri</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Emri">
+                <label for="exampleFormControlInput1">Data</label>
+                <input type="date" class="form-control" id="date" value="{{ $date }}" name="date" placeholder="Data">
             </div>
             <div class="form-group">
-                <label for="exampleFormControlInput1">Nr. telefonit</label>
-                <input type="text" class="form-control" id="phone" name="phone" placeholder="Telefoni">
+                <label for="exampleFormControlInput1">Tipi</label>
+                <input type="text" class="form-control" id="type" name="type" placeholder="Tipi">
             </div>
             <div class="form-group">
-                <label for="exampleFormControlInput1">Adresa</label>
-                <input type="text" class="form-control" id="address" name="address" placeholder="Adresa">
+                <label for="exampleFormControlInput1">Shuma</label>
+                <input type="number" step=".01" class="form-control" id="amount" name="amount" placeholder="Shuma">
             </div>
             <div class="form-group">
                 <label for="exampleFormControlInput1">Pershkrim</label>
                 <textarea rows=3 class="form-control" id="notes" name="notes" placeholder="Pershkrim"></textarea>
             </div>
+            
 
             <input type="submit" class="btn btn-primary btn-lg" value="Ruaj"></input>
             </form>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Pije;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,7 +30,30 @@ Route::get('/furnitoret/new', function () {
 
 // furnizimet
 Route::get('/furnizimet', 'FurnizimetController@get');
+Route::get('/furnizimet/new', 'FurnizimetController@newFurnizimet');
+Route::post('/addfurnizim', 'FurnizimetController@addFurnizim')->name('addFurnizim');
+
 
 //shpenzimet
 Route::get('/shpenzimet', 'ShpenzimetController@get');
+Route::post('/addshpenzim', 'ShpenzimetController@add')->name('addShpenzim');
+Route::get('/shpenzimet/new', function () {
+    $data = [
+        'date' => today()->toDateString()
+    ];
+    return view('new-shpenzim',$data);
+});
+
+//pijet
+Route::get('/pijet', 'PijetController@get');
+Route::post('/pijetlist', 'PijetController@list')->name('pijetlist');
+Route::post('/pijet', 'PijetController@add')->name('addFurnizimpije');
+
+Route::get('/choose-pijet', function () {
+    $pijet = Pije::all();
+    $data = [
+        'pijet' => $pijet
+    ];
+    return view('choose-pijet',$data);
+});
 
