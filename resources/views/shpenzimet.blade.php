@@ -7,7 +7,36 @@
             <div class="container">
                 <h4>Shpenzimet</h4>
                 <br>
-                <a href="/shpenzimet/new" class="btn btn-primary mb-3">Shto shpenzim</a>
+
+                <div class="container">
+                <form action="{{ route('shpenzimet') }}" method="get">
+                @csrf
+                <label>Prej:</label>
+                <input type="date" name='date_from' id="datepicker" value="{{ $start_of_month }}">
+                <label>Deri:</label>
+                <input type="date" name='date_to' id="datepicker" value="{{ $day }}">
+
+                    <label>Lloji:</label>
+                    <select name="type" id="type">
+                    <option value="all" selected>Te gjithe</option>
+                    @foreach ($types as $type)
+                        @if ($type == $selected_type)
+                            <option value="{{ $type }}" selected>{{ $type }}</option>
+                        @else
+                        <option value="{{ $type }}">{{ $type }}</option>
+                        @endif
+                    @endforeach
+                    </select>
+
+                    <br><br>
+                    <input type="submit" class="btn btn-primary" value="Filtro"/>
+                    <br> <br>
+                </div>
+                </form>
+                </div>
+                <a href="/shpenzimet/new" class="btn btn-primary mb-3">Shto shpenzim</a> <br>
+                <label>Totali: {{ $totali }} € </label>
+
                 <table class="table table-bordered">
                 <thead>
                     <tr>

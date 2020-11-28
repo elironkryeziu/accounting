@@ -21,7 +21,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //furnitoret
-Route::get('/furnitoret', 'FurnizimetController@furnitoret');
+Route::get('/furnitoret', 'FurnizimetController@furnitoret')->name('furnitoret');
 Route::post('/addfurnitor', 'FurnizimetController@addFurnitor')->name('addFurnitor');
 Route::delete('/furnitoret/{id}', 'FurnizimetController@deleteFurnitor');
 Route::get('/furnitoret/new', function () {
@@ -29,13 +29,13 @@ Route::get('/furnitoret/new', function () {
 });
 
 // furnizimet
-Route::get('/furnizimet', 'FurnizimetController@get');
+Route::get('/furnizimet', 'FurnizimetController@get')->name('furnizimet');
 Route::get('/furnizimet/new', 'FurnizimetController@newFurnizimet');
 Route::post('/addfurnizim', 'FurnizimetController@addFurnizim')->name('addFurnizim');
 
 
 //shpenzimet
-Route::get('/shpenzimet', 'ShpenzimetController@get');
+Route::get('/shpenzimet', 'ShpenzimetController@get')->name('shpenzimet');
 Route::post('/addshpenzim', 'ShpenzimetController@add')->name('addShpenzim');
 Route::get('/shpenzimet/new', function () {
     $data = [

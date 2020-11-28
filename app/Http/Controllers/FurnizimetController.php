@@ -9,13 +9,53 @@ use Illuminate\Http\Request;
 class FurnizimetController extends Controller
 {
     //
-    public function get()
+    public function get(Request $request)
     {
-        $furnizimet = Furnizimet::orderBy('created_at','desc')->get();
+        $furnitoret = Furnitori::get(['id','name']);
+        $types = Furnizimet::distinct()->pluck('type');
+        $from = now()->startOfMonth()->toDateString();
+        $to = now()->toDateString();
+        if ($request->date_from)
+        {
+            $from = $request->date_from;
+            $to = $request->date_to;
+            $furnizimet = Furnizimet::where('date','>=',$request->date_from)->where('date','<=',$request->date_to);
+        } else 
+        {
+            $furnizimet = Furnizimet::where('date','>=',now()->startOfMonth()->toDateString())->where('date','<=',now()->toDateString());
+        }
+
+
+        if ($request->furnitori)
+        {
+            if ($request->furnitori > 0)
+            {
+                $furnizimet = $furnizimet->where('furnitor_id',$request->furnitori);
+            }
+        }
+
+        if ($request->type)
+        {
+            if (strcmp($request->type,"all") > 0)
+            {
+                $furnizimet = $furnizimet->where('type',$request->type);
+            }
+        }
+        
+        // orderBy('created_at','desc')->get();
 
         $data = [
-            'furnizimet' => $furnizimet
+            'furnizimet' => $furnizimet->orderBy('created_at','desc')->get(),
+            'furnitoret' => $furnitoret,
+            'types' => $types,
+            'start_of_month' => $from,
+            'day' => $to,
+            'selected_furnitori' => $request->furnitori,
+            'selected_type' => $request->type,
+            'totali' => $furnizimet->sum('amount')
         ];
+
+        // return $data;
 
         return view('furnizimet',$data);      
     }
@@ -42,13 +82,8 @@ class FurnizimetController extends Controller
             'notes' => $request->notes
         ]);
 
-        $furnizimet = Furnizimet::orderBy('created_at','desc')->get();
+        return redirect()->route('furnizimet');
 
-        $data = [
-            'furnizimet' => $furnizimet
-        ];
-
-        return view('furnizimet',$data);
     }
 
     public function furnitoret() 
@@ -72,13 +107,8 @@ class FurnizimetController extends Controller
             'created_at' => now()
         ]);
 
-        $furnitoret = Furnitori::all();
+        return redirect()->route('furnitoret');
         
-        $data = [
-            'furnitoret' => $furnitoret
-        ];
-
-        return view('furnitoret',$data);
     }
 
     public function deleteFurnitor($id)

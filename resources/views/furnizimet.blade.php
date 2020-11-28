@@ -7,7 +7,48 @@
             <div class="container">
                 <h4>Furnizimet</h4>
                 <br>
-                <a href="/furnizimet/new" class="btn btn-primary mb-3">Shto furnizim</a>
+
+                <div class="container">
+                <form action="{{ route('furnizimet') }}" method="get">
+                @csrf
+                <label>Prej:</label>
+                <input type="date" name='date_from' id="datepicker" value="{{ $start_of_month }}">
+                <label>Deri:</label>
+                <input type="date" name='date_to' id="datepicker" value="{{ $day }}">
+                    <label>Furnitori:</label>
+                    <select name="furnitori" id="furnitori">
+                    <option value=0 selected>Te gjithe</option>
+                    @foreach ($furnitoret as $furnitori)
+                        @if ($furnitori->id == $selected_furnitori)
+                            <option value="{{ $furnitori->id }}" selected>{{ $furnitori->name }}</option>
+                        @else
+                        <option value="{{ $furnitori->id }}">{{ $furnitori->name }}</option>
+                        @endif
+                    @endforeach
+                    </select>
+
+                    <label>Lloji:</label>
+                    <select name="type" id="type">
+                    <option value="all" selected>Te gjithe</option>
+                    @foreach ($types as $type)
+                        @if ($type == $selected_type)
+                            <option value="{{ $type }}" selected>{{ $type }}</option>
+                        @else
+                        <option value="{{ $type }}">{{ $type }}</option>
+                        @endif
+                    @endforeach
+                    </select>
+
+                    <br><br>
+                    <input type="submit" class="btn btn-primary" value="Filtro"/>
+                    <br> <br>
+                </div>
+                </form>
+                </div>
+
+
+                <a href="/furnizimet/new" class="btn btn-primary mb-3">Shto furnizim</a> <br>
+                <label>Totali: {{ $totali }} € </label>
                 <table class="table table-bordered">
                 <thead>
                     <tr>
