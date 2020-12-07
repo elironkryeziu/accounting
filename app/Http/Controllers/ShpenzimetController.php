@@ -11,6 +11,7 @@ class ShpenzimetController extends Controller
 
     public function get(Request $request)
     {
+        // return Shpenzimet::where('type',$request->type)->get();
         $types = Shpenzimet::distinct()->pluck('type');
 
         $from = now()->startOfMonth()->toDateString();
@@ -27,9 +28,10 @@ class ShpenzimetController extends Controller
 
         if ($request->type)
         {
-            if (strcmp($request->type,"all") > 0)
+            if (strcmp($request->type,"all") < 0)
             {
-                $shpenzimet = $shpenzimet->where('type',$request->type);
+                $shpenzimet = $shpenzimet->where('type','like','%'.$request->type.'%');
+                // return "test";
             }
         }
 
