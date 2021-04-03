@@ -14,9 +14,11 @@ class PijetController extends Controller
     public function get()
     {
         $furnizimetpijet = FurnizimetPije::orderBy('created_at','desc')->get();
+        $from = now()->startOfMonth()->toDateString();
 
         $data = [
-            'furnizimet' => $furnizimetpijet
+            'furnizimet' => $furnizimetpijet,
+            'totali' => $furnizimetpijet->where('date','>=',$from)->sum('total')
         ];
 
         return view('furnizimet-pije',$data);
@@ -46,6 +48,8 @@ class PijetController extends Controller
     public function add(Request $request)
     {
         $total = 0;
+        $from = now()->startOfMonth()->toDateString();
+
         $furnizimpije = FurnizimetPije::create([
             'furnitor_id' => $request->furnitori,
             'date' => $request->date,
@@ -55,7 +59,6 @@ class PijetController extends Controller
         foreach ($request->pijet as $key => $pija)
         {
 
-            // dd($pija['quantity']);
             DB::table('furnizimet_pije_items')->insert([
                 'furnizim_id' => $furnizimpije->id,
                 'pije_id' => $key,
@@ -71,7 +74,8 @@ class PijetController extends Controller
         $furnizimetpijet = FurnizimetPije::orderBy('created_at','desc')->get();
 
         $data = [
-            'furnizimet' => $furnizimetpijet
+            'furnizimet' => $furnizimetpijet,
+            'totali' => $furnizimetpijet->where('date','>=',$from)->sum('total')
         ];
 
         return view('furnizimet-pije',$data);

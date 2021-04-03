@@ -25,6 +25,10 @@
         Pijet
         </a>
         </li>
+        <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="/investimet">
+        Investimet
+        </a>
+        </li>
 
           <li class="c-sidebar-nav-item mt-auto"><a class="c-sidebar-nav-link font-weight-bold c-sidebar-nav-link-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                        document.getElementById('logout-form').submit();">

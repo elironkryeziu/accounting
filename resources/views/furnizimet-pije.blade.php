@@ -8,6 +8,8 @@
                 <h4>Pijet</h4>
                 <br>
                 <a href="/choose-pijet" class="btn btn-primary mb-3">Shto furnizim</a>
+                <br><br>
+                <label>Totali: {{ $totali }} € </label>
                 <table class="table table-bordered">
                 <thead>
                     <tr>

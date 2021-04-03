@@ -44,6 +44,17 @@ Route::get('/shpenzimet/new', function () {
     return view('new-shpenzim',$data);
 });
 
+//investimet
+Route::get('/investimet', 'InvestimetController@get')->name('investimet');
+Route::post('/addinvestim', 'InvestimetController@add')->name('addInvestim');
+
+Route::get('/investimet/new', function () {
+    $data = [
+        'date' => today()->toDateString()
+    ];
+    return view('new-investim',$data);
+});
+
 //pijet
 Route::get('/pijet', 'PijetController@get');
 Route::post('/pijetlist', 'PijetController@list')->name('pijetlist');
