@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="container">
-                <h4>Shpenzimet</h4>
+                <h4>Investimet</h4>
                 <br>
 
                 <div class="container">
@@ -28,7 +28,7 @@
                 <thead>
                     <tr>
                     <th scope="col" class="text-center">#</th>
-                    <th scope="col" class="text-center">Lloji</th>
+                    <th scope="col" class="text-center">Emri</th>
                     <th scope="col" class="text-center">Pershkrimi</th>
                     <th scope="col" class="text-center">Shuma</th>
                     <th scope="col" class="text-center">Data</th>
